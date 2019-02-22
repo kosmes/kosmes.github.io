@@ -1,0 +1,81 @@
+---
+layout: post
+title:  "8bit.channer - Unity3d tile matching game"
+date:   2019-02-22 21:00:00
+author: kosmes9779
+categories: portfolio
+---
+
+## 리듬 타일 매칭 게임
+
+![](/assets/seusyas.png)
+![](/assets/2.jpg)
+
+bit.ch에서 방송하는 방송인에게 타일을 맞춰 돈을 준다는 컨샙에서 시작된 게임.
+
+일반적인 타일 매칭에서 리듬요소를 더해 위 게이지에 맞춰 타일을 매칭시켜야지 성공적으로 콤보가 싸인다. 게이지를 못 맞췄거나 일정시간이 지나면 콤보가 초기화 되고 일정 콤보가 쌓일때마다 방송인의 리액션이 달라진다.
+
+
+2018 글로벌 게임잼 출품작
+
+|               |                          |
+|---------------|--------------------------|
+| 개발 인원     | 2 명 (개발자, 디자이너)    |
+| 사용 툴       | Unity 3d                 |
+| 사용 언어     | C#                       |
+| 에셋 사용여부  | 유로 타일 매치 에셋 사용   |
+
+
+## 개발 내용
+
+ * 박자​에 따른 타일 매칭 구현
+ * 타일 매칭 성공에 따른 콤보 시스템 구현
+ * 각기다른 콤보 에니메이션을 가진 두 방송인 구현
+​ * 콤보 실패시 화면 흔들림 구현
+​ * 리소스 메니저를 통해 리소스를 캐싱하여 로딩 최적화
+
+## 주요 소스
+
+### 화면 흔들림
+``` C#
+public float shakeIntensity = .3f;
+public float shakeDecay = 0.002f;
+
+private Vector3 originPosition;
+private Quaternion originRotation;
+private float tempShakeIntensity = 0;
+
+public void Shake() {
+    originPosition = transform.position;
+    originRotation = transform.rotation;
+    tempShakeIntensity = shakeIntensity;
+
+    animator.SetTrigger("Angry");
+
+    StartCoroutine(ShakeCoroutine());
+}
+
+private IEnumerator ShakeCoroutine() {
+    while (tempShakeIntensity > 0){
+        transform.position = originPosition + Random.insideUnitSphere * tempShakeIntensity;
+        transform.rotation = new Quaternion(
+            originRotation.x + Random.Range (-tempShakeIntensity, tempShakeIntensity) * .2f,
+            originRotation.y + Random.Range (-tempShakeIntensity, tempShakeIntensity) * .2f,
+            originRotation.z + Random.Range (-tempShakeIntensity, tempShakeIntensity) * .2f,
+            originRotation.w + Random.Range (-tempShakeIntensity, tempShakeIntensity) * .2f);
+        tempShakeIntensity -= shakeDecay;
+        yield return null;
+    }
+    yield return null;
+}
+```
+
+Coroutine을 이용한 실시간 화면 흔들림 구현.
+
+
+## 개발 중 어려웠던 점
+
+### ​박자 시스템
+
+지금 생각해보면 당연한 것이지만 그때는 상당히 난해한 문제였는데 박자를 맞추는 시스템이었다. 문제가 생긴 부분은 박자의 완벽한 부분에서 넘어갈 때였다. 최고 박자이전까지는 인식이 됬지만 넘어가면 인식을 못하는 문제였다.
+이 문제는 타이머 방식으로 박자를 맞춰서 생긴 문제였고 결국 게이지를 구현하여 박자를 맞췄다.
