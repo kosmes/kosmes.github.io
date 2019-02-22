@@ -51,6 +51,9 @@ descriptions:
   - cat: dev
     desc: "개발 관련 포스트."
 
+  - cat: portfolio
+    desc: "포트폴리오"
+
 # Social icons and sharing options
 #
 # Social settings are used in two places:
