@@ -6,8 +6,6 @@ author: kosmes9779
 categories: KosmesInterpreter
 ---
 
-# 한국어 프로그래밍 언어
-
 ## 개요
 
 언젠가부터 생각이 있었는데 여건이 안되서 미루고만 있었던 프로젝트가 있었다.
