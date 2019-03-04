@@ -12,11 +12,10 @@ permalink: /about/
 ## 보유 기술
 
 1. Unity3D
-    1. [RPG 개발]()
     1. [퍼즐 게임](https://kosmes.github.io/portfolio/2019/02/22/junkulet.html)
     1. [타일 매칭 게임](https://kosmes.github.io/portfolio/2019/02/22/8bit.ch.html)
 1. Unreal Engine
-    1. [VR 스포츠 게임]()
+    1. [VR 스포츠 게임](https://kosmes.github.io/portfolio/2019/03/04/vr-sport.html)
 
 ## 약력
 
