@@ -92,6 +92,7 @@ JVM은 각 타입별로 다른 OP CODE를 가지고 있다 먼뜻이냐면 값�
 |-|-|-|
 |i|iconst|0x15|
 |l|lload|0x16|
+
 등등등 자세한 내용은 [여기](https://en.wikipedia.org/wiki/Java_bytecode_instruction_listings)에서...
 
 
