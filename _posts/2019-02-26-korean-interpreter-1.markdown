@@ -3,7 +3,7 @@ layout: post
 title:  "한국어 인터프리터 개발기 #1"
 date:   2019-02-27 01:00:00
 author: kosmes9779
-categories: KosmesInterpreter
+categories: BomInterpreter
 ---
 
 ## 개요
